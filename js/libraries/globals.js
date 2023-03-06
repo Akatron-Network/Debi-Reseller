@@ -1,0 +1,1 @@
+var host_url = "http://debiapi.akatron.net:8000/api/functions/"
