@@ -69,8 +69,12 @@ body {
 }
 
 .form-label {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--green_pantone) !important;
+}
+
+.form-control {
+  font-size: 14px;
 }
 
 .form-outline {
