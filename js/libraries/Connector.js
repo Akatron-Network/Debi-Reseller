@@ -20,7 +20,7 @@ class Connector {
       data: data,
       dataType: "json",
       contentType: 'application/json',
-      headers: { "Token": localStorage.token },
+      headers: { "Token": localStorage.Token },
 
       success: (d, status) => {
         if (d.Success) {

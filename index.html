@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Debi - Bayi</title>
+  <title>Debi RS | Panel</title>
 
 <!-- External Imports -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
@@ -16,42 +16,12 @@
 
 <!-- Internal Imports -->
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/sidebar.css">
 </head>
 <body>
 
-<div style="height: 100vh; position: relative;">
-  <div class="shadow" style="position: absolute; left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); width: 450px; backdrop-filter: blur(10px); background-color: rgba(61,61,61,0.08); border-radius: 5px;">
-    <div class="animate__animated" id="div_anim">
-      <div class="text-center mt-5">
-        <img style="margin-left: auto; margin-right: auto; max-width: 200px;" src="/img/debi-icon.png" alt="">
-        <h1 style="letter-spacing: 5px; font-size: 18px; margin-left: 3px;">R E S E L L E R</h1>
-      </div>
-      <div class="mb-2" style="padding: 30px 60px;">
-        <h2 class="text-center mb-3" style="font-weight: bold; letter-spacing: 1px; font-size: 22px;">Giriş Yap</h2>
-        <div class="form-outline form-white mb-3">
-          <input type="text" id="username" class="form-control" />
-          <label class="form-label" for="form12">Kullanıcı Adı</label>
-        </div>
-        <div class="form-outline form-white mb-3">
-          <input type="password" id="password" class="form-control" />
-          <label class="form-label" for="form12">Şifre</label>
-        </div>
-        <div id="error_div" class="mb-3" style="display: none; text-align: center; background-color: var(--danger); font-size: 15px; padding: 5px 0; border-radius: 5px;">Kullanıcı adı veya şifre hatalı!</div>
-  
-        <div style="text-align: center;">
-          <button onclick="login_handler()" type="button" class="btn btn-primary">Giriş Yap</button>
-        </div>
-  
-        <div style="text-align: center; margin-top: 30px; color: var(--platinium)">
-          Bayi olmak için <a href="#" style="color: var(--sea_green)">tıklayın</a>.
-        </div>
-      </div>
-    </div>
-    
-  </div>
-</div>
 
-
+<div id="page_body" class="page-body"></div>
 
 <!-- External Imports -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -62,39 +32,34 @@
 
 <!-- Internal Imports -->
 <script src="/js/libraries/globals.js"></script>
+<script src="/js/libraries/misc.js"></script>
 <script src="/js/libraries/Connector.js"></script>
 <script src="/js/models/auth.js"></script>
+<script src="/js/models/logs.js"></script>
 
 <script>
-  async function login_handler() {
-    let username = $('#username').val()
-    let password = $('#password').val()
 
-    try {
-      await Auth.login(username, password)
-      if (localStorage.getItem('Token')) {
-        alert('login successfull')
-      }
-      else {
-        error_animate()
-      }
-    }
-    catch {
-      error_animate()
-    }
+if (!getLocals().Token) {
+  location.href = '/login.html'
+}
+
+templateLoader('navs')
+templateLoader('dashboard', document.getElementById('page_body'))
+
+function collapse_handler(collapse_id) {
+  let coll = $('#' + collapse_id)
+  let btn = $('#btn_' + collapse_id)
+  let is_opening = coll.height() === 0
+
+  if (is_opening) {
+    btn.children('.collapse-icon').html('<i class="fa-solid fa-chevron-up"></i>')
+  }
+  else {
+    btn.children('.collapse-icon').html('<i class="fa-solid fa-chevron-down"></i>')
   }
 
-  async function error_animate() {
-    let anim_div = $('#div_anim')
-    let error_div = $('#error_div')
-    
-    error_div.show()
-    anim_div.addClass('animate__shakeX')
-    
-    setTimeout(() =>{
-      anim_div.removeClass('animate__shakeX')
-    }, 1000)
-  }
+}
+
 </script>
 
 </body>

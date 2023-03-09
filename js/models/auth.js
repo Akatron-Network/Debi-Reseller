@@ -9,7 +9,11 @@ class Auth {
   static async login(username, password) {
     let login_ans = await auth_conn.get({username, password})
     localStorage.clear()
-    for (let key in login_ans) { localStorage.setItem(key, login_ans[key]) }
+    for (let key in login_ans) { 
+      let val = login_ans[key]
+      if (typeof(val) === 'object') { val = JSON.stringify(val) }
+      localStorage.setItem(key, val)
+    }
   }
 
   //* Logout
