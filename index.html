@@ -17,6 +17,7 @@
 <!-- Internal Imports -->
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/satis.css">
 </head>
 <body>
 
@@ -36,6 +37,8 @@
 <script src="/js/libraries/Connector.js"></script>
 <script src="/js/models/auth.js"></script>
 <script src="/js/models/logs.js"></script>
+<script src="/js/models/products.js"></script>
+<script src="/js/models/sales.js"></script>
 
 <script>
 
@@ -44,7 +47,13 @@ if (!getLocals().Token) {
 }
 
 templateLoader('navs')
-templateLoader('dashboard', document.getElementById('page_body'))
+
+if (getLocals().active_template) {
+  templateLoader(getLocals().active_template, document.getElementById('page_body'))
+}
+else {
+  templateLoader('dashboard', document.getElementById('page_body'), true)
+}
 
 function collapse_handler(collapse_id) {
   let coll = $('#' + collapse_id)

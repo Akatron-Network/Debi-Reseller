@@ -71,7 +71,7 @@
 
 <!-- Sidebar -->
 <div class="side-outer">
-  <button  class="btn btn-sidebar btn-main" type="button">
+  <button onclick="templateLoader('dashboard', document.getElementById('page_body'), true);" class="btn btn-sidebar btn-main" type="button">
     <span class="btn-main-title"><i class="fa-solid fa-house"></i>&nbsp; <#>Local.reseller.name<#></span>
   </button>
 
@@ -82,7 +82,7 @@
 
   <!-- Collapsed content -->
   <div class="collapse show" id="collapse_sell">
-    <button class="btn btn-sidebar btn-alter-collapse"><i class="fa-solid fa-clipboard-check"></i> Satış Kayıtları</button>
+    <button onclick="templateLoader('pages/satis', document.getElementById('page_body'), true);" class="btn btn-sidebar btn-alter-collapse"><i class="fa-solid fa-clipboard-check"></i> Satış Kayıtları</button>
     <button class="btn btn-sidebar btn-alter-collapse"><i class="fa-solid fa-clipboard-question"></i> Demo Kullanıcıları</button>
     <button class="btn btn-sidebar btn-alter-collapse"><i class="fa-solid fa-clipboard-list"></i> Fiyat Listesi</button>
   </div>

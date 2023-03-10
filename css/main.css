@@ -53,8 +53,9 @@ body {
   color: var(--platinium);
   overflow-x: hidden;
   background-image: url('/img/bg-texture.png');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  height: 100vh;
 }
 
 .btn {
@@ -91,6 +92,18 @@ body {
 
 .form-control {
   font-size: 14px;
+  background-color: var(--black_light_tra);
+  border-color: var(--onyx);
+  color: var(--platinium);
+}
+
+.form-control:disabled {
+  background-color: var(--black_light);
+}
+
+.form-control:focus {
+  background-color: var(--black_light_tra);
+  color: var(--platinium);
 }
 
 .form-outline {
@@ -104,4 +117,17 @@ body {
 
 .table th, .table td {
   padding: 5px 10px;
+}
+
+
+.form-select {
+  background-color: var(--black_light_tra);
+  color: var(--platinium);
+  padding: 2px 10px;
+  border-color: var(--onyx);
+}
+
+.input-group-text {
+  color: var(--platinium);
+  border-color: var(--onyx);
 }

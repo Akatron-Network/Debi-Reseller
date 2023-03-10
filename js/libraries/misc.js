@@ -1,7 +1,9 @@
-async function templateLoader(template_name, html_element, location = 'afterbegin') {
+async function templateLoader(template_name, html_element, save = false, location = 'afterbegin') {
   
   if (!html_element) html_element = document.getElementsByTagName('body')[0]
-  
+  if (save) {html_element.innerHTML = ''; localStorage.setItem('active_template', template_name)}
+
+
   await $.ajax({
     type: 'GET',
     async: false,
