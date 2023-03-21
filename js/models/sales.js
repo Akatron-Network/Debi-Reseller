@@ -7,4 +7,9 @@ class Sales {
     let ans = await sales_conn.get()
     return ans
   }
+
+  static async post(data) {
+    let ans = await sales_conn.post(data)
+    return ans
+  }
 }

@@ -16,11 +16,10 @@
 .user-card .title h2 {
   font-size: 20px;
   margin-bottom: 0;
-  margin-left: 15px;
 }
 
 .user-card .content {
-  padding: 10px 5px;
+  padding: 10px 10px;
   font-size: 15px;
 }
 
@@ -31,6 +30,7 @@
   margin-right: 20px;
   text-transform: capitalize;
   letter-spacing: 1px;
+  padding-left: 20px;
 }
 
 li {

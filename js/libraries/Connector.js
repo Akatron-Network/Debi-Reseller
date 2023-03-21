@@ -17,10 +17,14 @@ class Connector {
     await $.ajax({
       url: this.url,
       method: method,
-      data: data,
+      data: data ? JSON.stringify(data) : data,
       dataType: "json",
       contentType: 'application/json',
-      headers: { "Token": localStorage.Token },
+      headers: { 
+        "Token": localStorage.Token,
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
 
       success: (d, status) => {
         if (d.Success) {
@@ -40,6 +44,10 @@ class Connector {
   //* Get Request
   //r returns answer as json
   async get (data) { return await this.sendRequest(data, 'GET') }
+
+  //* Post Request
+  //r returns answer as json
+  async post (data) { return await this.sendRequest(data, 'POST') }
 
   //* Delete Request
   //r returns answer as json

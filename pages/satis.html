@@ -1,6 +1,6 @@
 <div style="padding: 20px; width: calc(100% - 300px);">
   <div class="row">
-    <div class="col-xxl-8 col-xl-12">
+    <div class="col-xxl-12 col-xl-12">
       <div style="background-color: var(--black_light_tra); backdrop-filter: blur(5px); border-radius: 5px;">
         <div style="background-color: var(--black_light); padding: 10px;">
           <button class="btn btn-collapse" style="padding: 0; color: var(--platinium); width: 100%; text-align: left;" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapse_sale_record" aria-expanded="false" aria-controls="collapse_sale_record">
@@ -15,56 +15,61 @@
                   <div class="col-6">
 
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Firma İsmi</span>
-                      <input type="text" class="form-control" aria-describedby="basic-addon1"/>
+                      <span class="input-group-text">Firma İsmi</span>
+                      <input type="text" class="form-control" id="nsale_company_name"/>
                     </div>
                     
                     <div class="input-group mb-3">
                       <label class="input-group-text">İl</label>
-                      <select class="form-select"></select>
+                      <select class="form-select" id="nsale_city"></select>
                     </div>
                     <div class="input-group mb-3">
                       <label class="input-group-text">İlçe</label>
-                      <select class="form-select"></select>
+                      <select class="form-select" id="nsale_province"></select>
                     </div>
                     
                   </div>
                   <div class="col-6">
 
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Telefon</span>
-                      <input type="text" class="form-control" aria-describedby="basic-addon1"/>
+                      <span class="input-group-text">Telefon</span>
+                      <input type="text" class="form-control" id="nsale_phone"/>
                     </div>
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Telefon 2</span>
-                      <input type="text" class="form-control" aria-describedby="basic-addon1"/>
+                      <span class="input-group-text">Telefon 2</span>
+                      <input type="text" class="form-control" id="nsale_phone2"/>
                     </div>
                     
                   </div>
                   <div class="col-12">
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Adres</span>
-                      <input type="text" class="form-control" aria-describedby="basic-addon1"/>
+                      <span class="input-group-text">Adres</span>
+                      <input type="text" class="form-control" id="nsale_address"/>
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Vergi Dairesi</span>
-                      <input type="text" class="form-control" aria-describedby="basic-addon1"/>
+                      <span class="input-group-text">Vergi Dairesi</span>
+                      <input type="text" class="form-control" id="nsale_tax_office"/>
                     </div>
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Sektör</span>
-                      <input type="text" class="form-control" aria-describedby="basic-addon1"/>
+                      <span class="input-group-text">Sektör</span>
+                      <input type="text" class="form-control" id="nsale_sector"/>
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Vergi No</span>
-                      <input type="text" class="form-control" aria-describedby="basic-addon1"/>
+                      <span class="input-group-text">Vergi No</span>
+                      <input type="text" class="form-control" id="nsale_tax_no"/>
                     </div>
                     <div class="input-group mb-3">
                       <label class="input-group-text">Firma Boyutu</label>
-                      <select class="form-select"></select>
+                      <select class="form-select" id="nsale_firm_size">
+                        <option value="1-5">5 Kişiden az</option>
+                        <option value="5-10">5-10 Kişi</option>
+                        <option value="10-50">10-50 Kişi</option>
+                        <option value=">50">50 Kişiden fazla</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -92,12 +97,14 @@
                 <div class="mb-3" id="users"></div>
                 
                 <div class="input-group mb-3" style="max-width: calc(50% - 10px);">
-                  <span class="input-group-text" id="basic-addon1">Toplam Tutar</span>
-                  <input type="text" class="form-control" aria-describedby="basic-addon1" value="0 $" disabled/>
+                  <span class="input-group-text">Toplam Tutar</span>
+                  <input type="text" id="total_fee" class="form-control" style="text-align: right;" value="-" disabled/>
+                  
+                  <span class="input-group-text">$</span>
                 </div>
 
                 <div style="text-align: right;">
-                  <button type="button" class="btn btn-primary">Kayıt Oluştur</button>
+                  <button type="button" onclick="new_sale()" class="btn btn-primary">Kayıt Oluştur</button>
                 </div>
               </div>
 
@@ -115,15 +122,16 @@
           <h1 style="font-size: 22px;" class="mt-1 mb-1"><i class="fa-solid fa-user-clock"  style="margin-right: 5px; margin-left: 5px;"></i> Satış Kayıtları Geçmişi</h1>
         </div>
         <div style="padding: 10px;">
-          <table class="table table-borderless" style="color: white;">
+          <table class="table table-borderless table-dark table-rs-hover" style="color: white;">
             <thead>
               <tr>
-                <th>Tarih</th>
-                <th>Firma</th>
-                <th>İl</th>
-                <th>Sektör</th>
-                <th>Ürün</th>
-                <th>Kullanıcı</th>
+                <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">Tarih</th>
+                <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">Firma</th>
+                <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">İl</th>
+                <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">Sektör</th>
+                <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">Ürün</th>
+                <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">Kullanıcı</th>
+                <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);"></th>
               </tr>
             </thead>
             <tbody id="sales_list"></tbody>
@@ -132,5 +140,101 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<div class="modal fade" id="renewal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-arrows-rotate"></i>&nbsp; Satış Yenileme</h5>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        
+        <div class="row">
+          <div class="col-6">
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">Firma İsmi</span>
+              <input type="text" class="form-control" disabled/>
+            </div>
+            
+            <div class="input-group mb-3">
+              <label class="input-group-text">İl</label>
+              <select class="form-select" disabled></select>
+            </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text">İlçe</label>
+              <select class="form-select" disabled></select>
+            </div>
+            
+          </div>
+          <div class="col-6">
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">Telefon</span>
+              <input type="text" class="form-control" disabled/>
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Telefon 2</span>
+              <input type="text" class="form-control" disabled/>
+            </div>
+            
+          </div>
+          <div class="col-12">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Adres</span>
+              <input type="text" class="form-control" disabled/>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Vergi Dairesi</span>
+              <input type="text" class="form-control" disabled/>
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Sektör</span>
+              <input type="text" class="form-control" disabled/>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Vergi No</span>
+              <input type="text" class="form-control" disabled/>
+            </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text">Firma Boyutu</label>
+              <select class="form-select" disabled></select>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Ürün</span>
+              <input type="text" class="form-control" disabled/>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Ödeme Aralığı</span>
+              <input type="text" class="form-control" disabled/>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Tutar</span>
+              <input type="text" class="form-control" disabled/>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">İptal</button>
+        <button type="button" class="btn btn-primary">Kaydet</button>
+      </div>
+    </div>
   </div>
 </div>
