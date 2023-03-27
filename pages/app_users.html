@@ -1,0 +1,234 @@
+<!-- * Filter Buttons -->
+<div class="row" style="width: calc(100% - 290px);">
+  <div class="col-8">
+
+    <div class="row user-filters">
+      <div class="col-1 filter-col">
+        <button type="button" title="Liste Görünümü" class="btn btn-secondary" style="opacity: 1;">
+          <i class="fa-solid fa-list"></i>
+        </button>
+      </div>
+      <div class="col-3 filter-col">
+        <button id="filter-all" onclick="render_users()" type="button" class="btn btn-primary btn-filter selected">Tüm Kullanıcılar</button>
+      </div>
+      <div class="col-3 filter-col">
+        <button id="filter-ExpNear" onclick="render_users('ExpNear')" type="button" class="btn btn-warning btn-filter">Vadesi Yaklaşanlar</button>
+      </div>
+      <div class="col-3 filter-col">
+        <button id="filter-ExpFinished" onclick="render_users('ExpFinished')" type="button" class="btn btn-secondary btn-filter">Vadesi Bitmişler</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-4" style="text-align: right; padding-top: 15px;">
+    <button type="button" class="btn btn-primary grid-btn"><i class="fa-solid fa-plus"></i>&nbsp; Yeni Kullanıcı</button>
+  </div>
+
+</div>
+
+<!-- * User List -->
+<div id="user-list" class="row mt-3" style="width: calc(100% - 290px);"></div>
+
+<!-- * Details Modal -->
+<div class="modal fade" id="details-modal" tabindex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" id="details-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fa-solid fa-user-gear"></i> Kullanıcı Detayları</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-6">
+            <h3 class="user-details-title">Genel Bilgiler</h3>
+            <table class="table user-details table-hover">
+              <tr>
+                <th>Kullanıcı Adı</th>
+                <td id="udet.username"></td>
+              </tr>
+              <tr>
+                <th>Kayıt Tarihi</th>
+                <td id="udet.register_date"></td>
+              </tr>
+              <tr>
+                <th>Kayıt IP</th>
+                <td id="udet.register_ip"></td>
+              </tr>
+              <tr>
+                <th>Vade Tarihi</th>
+                <td id="udet.membership_expiration"></td>
+              </tr>
+            </table>
+            <hr>
+            <h3 class="user-details-title">Ürün Bilgileri</h3>
+            <table class="table user-details table-hover">
+              <tr>
+                <th>Ürün</th>
+                <td id="udet.product_code"></td>
+              </tr>
+              <tr>
+                <th>Kullanım (Ay)</th>
+                <td id="udet.bandwidth_usage"></td>
+              </tr>
+              <tr>
+                <th>Sayfa Limiti</th>
+                <td id="udet.page_limit"></td>
+              </tr>
+              <tr>
+                <th>Klasör Limiti</th>
+                <td id="udet.directory_limit"></td>
+              </tr>
+              <tr>
+                <th>Koleksiyon Limiti</th>
+                <td id="udet.collection_limit"></td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-6">
+
+            <h3 class="user-details-title">Detaylar</h3>
+            <table class="table user-details table-hover">
+              <tr>
+                <th>İsim</th>
+                <td id="udet.name"></td>
+              </tr>
+              <tr>
+                <th>Soyad</th>
+                <td id="udet.surname"></td>
+              </tr>
+              <tr>
+                <th>Firma</th>
+                <td id="udet.company_name"></td>
+              </tr>
+              <tr>
+                <th>Departman</th>
+                <td id="udet.department"></td>
+              </tr>
+              <tr>
+                <th>Ülke</th>
+                <td id="udet.country"></td>
+              </tr>
+              <tr>
+                <th>Şehir</th>
+                <td id="udet.city"></td>
+              </tr>
+              <tr>
+                <th>İlçe</th>
+                <td id="udet.province"></td>
+              </tr>
+              <tr>
+                <th>Adres</th>
+                <td id="udet.address"></td>
+              </tr>
+              <tr>
+                <th>E-Mail</th>
+                <td id="udet.mail"></td>
+              </tr>
+              <tr>
+                <th>Telefon</th>
+                <td id="udet.phone"></td>
+              </tr>
+              <tr>
+                <th>Telefon 2</th>
+                <td id="udet.phone2"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="udet.btn.renewal" type="button" class="btn btn-warning"><i class="fa-regular fa-credit-card"></i>&nbsp; Satış Yenile</button>
+        <button id="udet.btn.changepass" type="button" class="btn btn-success"><i class="fa-solid fa-unlock-keyhole"></i>&nbsp; Şifre Değiştir</button>
+        <button id="udet.btn.app" type="button" class="btn btn-primary"><i class="fa-solid fa-right-to-bracket"></i>&nbsp; Uygulamaya Gir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- * Renewal Modal -->
+<div class="modal fade" id="renewal-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog" style="margin-top: 100px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-regular fa-credit-card"></i>&nbsp; Satış Yenile</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Firma</span>
+          <input id="renewal.company_name" type="text" class="form-control" disabled>
+        </div>
+
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="inputGroupSelect01">Ödeme Aralığı</label>
+          <select id="renewal.payment_interval" class="form-select">
+            <option value="MONTH">Aylık</option>
+            <option value="YEAR">Yıllık</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button onclick="$('#renewal-modal').modal('hide')" type="button" class="btn btn-secondary">
+          <i class="fa-solid fa-xmark"></i>&nbsp; İptal
+        </button>
+        <button onclick="save_renewal()" type="button" class="btn btn-warning">
+          <i class="fa-solid fa-floppy-disk"></i>&nbsp; Kaydet
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- * ChnagePass Modal -->
+<div class="modal fade" id="pass-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog" style="margin-top: 100px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-unlock-keyhole"></i>&nbsp; Şifre Değiştir</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Kullanıcı</span>
+          <input id="pass.username" type="text" class="form-control" disabled>
+        </div>
+
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="pass.password">Şifre</label>
+          <input id="pass.password" type="password" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="pass.password-2">Şifre Tekrar</label>
+          <input id="pass.password-2" type="password" class="form-control">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button onclick="$('#pass-modal').modal('hide')" type="button" class="btn btn-secondary">
+          <i class="fa-solid fa-xmark"></i>&nbsp; İptal
+        </button>
+        <button onclick="save_pass()" type="button" class="btn btn-success">
+          <i class="fa-solid fa-floppy-disk"></i>&nbsp; Kaydet
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- * Operation Successed Modal -->
+<div class="modal fade" id="success-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog bg-success" style="margin-top: 100px;">
+    <div class="modal-content">
+      <div class="modal-body" style="padding: 50px 30px; text-align: center; font-weight: bold;">
+        <h3 style="font-size: 70px"><i class="fa-regular fa-circle-check"></i></h3>
+        <h3>İşlem Başarıyla Kaydedildi!</h3>
+      </div>
+    </div>
+  </div>
+</div>

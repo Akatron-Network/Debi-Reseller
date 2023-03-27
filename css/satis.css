@@ -49,3 +49,15 @@ li {
 .content .price {
   text-align: center;
 }
+
+
+.key_details {
+  border: 1px solid var(--jet_glass);
+  padding: 5px;
+  color: var(--cultured);
+}
+
+.key_details ul {
+  margin: 0;
+  margin-left: -10px;
+}

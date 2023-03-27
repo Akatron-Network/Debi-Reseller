@@ -21,11 +21,93 @@
                     
                     <div class="input-group mb-3">
                       <label class="input-group-text">İl</label>
-                      <select class="form-select" id="nsale_city"></select>
+                      <select class="form-select" id="nsale_city">
+                        <option>Adana</option>
+                        <option>Adıyaman</option>
+                        <option>Afyonkarahisar</option>
+                        <option>Ağrı</option>
+                        <option>Amasya</option>
+                        <option>Ankara</option>
+                        <option>Antalya</option>
+                        <option>Artvin</option>
+                        <option>Aydın</option>
+                        <option>Balıkesir</option>
+                        <option>Bilecik</option>
+                        <option>Bingöl</option>
+                        <option>Bitlis</option>
+                        <option>Bolu</option>
+                        <option>Burdur</option>
+                        <option>Bursa</option>
+                        <option>Çanakkale</option>
+                        <option>Çankırı</option>
+                        <option>Çorum</option>
+                        <option>Denizli</option>
+                        <option>Diyarbakır</option>
+                        <option>Edirne</option>
+                        <option>Elazığ</option>
+                        <option>Erzincan</option>
+                        <option>Erzurum</option>
+                        <option>Eskişehir</option>
+                        <option>Gaziantep</option>
+                        <option>Giresun</option>
+                        <option>Gümüşhane</option>
+                        <option>Hakkâri</option>
+                        <option>Hatay</option>
+                        <option>Isparta</option>
+                        <option>Mersin</option>
+                        <option>İstanbul</option>
+                        <option>İzmir</option>
+                        <option>Kars</option>
+                        <option>Kastamonu</option>
+                        <option>Kayseri</option>
+                        <option>Kırklareli</option>
+                        <option>Kırşehir</option>
+                        <option>Kocaeli</option>
+                        <option>Konya</option>
+                        <option>Kütahya</option>
+                        <option>Malatya</option>
+                        <option>Manisa</option>
+                        <option>Kahramanmaraş</option>
+                        <option>Mardin</option>
+                        <option>Muğla</option>
+                        <option>Muş</option>
+                        <option>Nevşehir</option>
+                        <option>Niğde</option>
+                        <option>Ordu</option>
+                        <option>Rize</option>
+                        <option>Sakarya</option>
+                        <option>Samsun</option>
+                        <option>Siirt</option>
+                        <option>Sinop</option>
+                        <option>Sivas</option>
+                        <option>Tekirdağ</option>
+                        <option>Tokat</option>
+                        <option>Trabzon</option>
+                        <option>Tunceli</option>
+                        <option>Şanlıurfa</option>
+                        <option>Uşak</option>
+                        <option>Van</option>
+                        <option>Yozgat</option>
+                        <option>Zonguldak</option>
+                        <option>Aksaray</option>
+                        <option>Bayburt</option>
+                        <option>Karaman</option>
+                        <option>Kırıkkale</option>
+                        <option>Batman</option>
+                        <option>Şırnak</option>
+                        <option>Bartın</option>
+                        <option>Ardahan</option>
+                        <option>Iğdır</option>
+                        <option>Yalova</option>
+                        <option>Karabük</option>
+                        <option>Kilis</option>
+                        <option>Osmaniye</option>
+                        <option>Düzce</option>
+                      </select>
                     </div>
                     <div class="input-group mb-3">
                       <label class="input-group-text">İlçe</label>
-                      <select class="form-select" id="nsale_province"></select>
+                      <input type="text" class="form-control" id="nsale_province"/>
                     </div>
                     
                   </div>
@@ -128,6 +210,7 @@
                 <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">Tarih</th>
                 <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">Firma</th>
                 <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">İl</th>
+                <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">İlçe</th>
                 <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">Sektör</th>
                 <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">Ürün</th>
                 <th style="font-weight: bold; letter-spacing: 1px; background-color: var(--darkest_jet);">Kullanıcı</th>
@@ -143,11 +226,11 @@
   </div>
 </div>
 
-<div class="modal fade" id="renewal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="sale_details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-arrows-rotate"></i>&nbsp; Satış Yenileme</h5>
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-clipboard-check"></i>&nbsp; Satış Detayları</h5>
         <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -158,16 +241,98 @@
 
             <div class="input-group mb-3">
               <span class="input-group-text">Firma İsmi</span>
-              <input type="text" class="form-control" disabled/>
+              <input type="text" class="form-control" id="sdet_company_name" disabled/>
             </div>
             
             <div class="input-group mb-3">
               <label class="input-group-text">İl</label>
-              <select class="form-select" disabled></select>
+              <select class="form-select" id="sdet_city" disabled>
+                <option>Adana</option>
+                <option>Adıyaman</option>
+                <option>Afyonkarahisar</option>
+                <option>Ağrı</option>
+                <option>Amasya</option>
+                <option>Ankara</option>
+                <option>Antalya</option>
+                <option>Artvin</option>
+                <option>Aydın</option>
+                <option>Balıkesir</option>
+                <option>Bilecik</option>
+                <option>Bingöl</option>
+                <option>Bitlis</option>
+                <option>Bolu</option>
+                <option>Burdur</option>
+                <option>Bursa</option>
+                <option>Çanakkale</option>
+                <option>Çankırı</option>
+                <option>Çorum</option>
+                <option>Denizli</option>
+                <option>Diyarbakır</option>
+                <option>Edirne</option>
+                <option>Elazığ</option>
+                <option>Erzincan</option>
+                <option>Erzurum</option>
+                <option>Eskişehir</option>
+                <option>Gaziantep</option>
+                <option>Giresun</option>
+                <option>Gümüşhane</option>
+                <option>Hakkâri</option>
+                <option>Hatay</option>
+                <option>Isparta</option>
+                <option>Mersin</option>
+                <option>İstanbul</option>
+                <option>İzmir</option>
+                <option>Kars</option>
+                <option>Kastamonu</option>
+                <option>Kayseri</option>
+                <option>Kırklareli</option>
+                <option>Kırşehir</option>
+                <option>Kocaeli</option>
+                <option>Konya</option>
+                <option>Kütahya</option>
+                <option>Malatya</option>
+                <option>Manisa</option>
+                <option>Kahramanmaraş</option>
+                <option>Mardin</option>
+                <option>Muğla</option>
+                <option>Muş</option>
+                <option>Nevşehir</option>
+                <option>Niğde</option>
+                <option>Ordu</option>
+                <option>Rize</option>
+                <option>Sakarya</option>
+                <option>Samsun</option>
+                <option>Siirt</option>
+                <option>Sinop</option>
+                <option>Sivas</option>
+                <option>Tekirdağ</option>
+                <option>Tokat</option>
+                <option>Trabzon</option>
+                <option>Tunceli</option>
+                <option>Şanlıurfa</option>
+                <option>Uşak</option>
+                <option>Van</option>
+                <option>Yozgat</option>
+                <option>Zonguldak</option>
+                <option>Aksaray</option>
+                <option>Bayburt</option>
+                <option>Karaman</option>
+                <option>Kırıkkale</option>
+                <option>Batman</option>
+                <option>Şırnak</option>
+                <option>Bartın</option>
+                <option>Ardahan</option>
+                <option>Iğdır</option>
+                <option>Yalova</option>
+                <option>Karabük</option>
+                <option>Kilis</option>
+                <option>Osmaniye</option>
+                <option>Düzce</option>
+              </select>
             </div>
             <div class="input-group mb-3">
               <label class="input-group-text">İlçe</label>
-              <select class="form-select" disabled></select>
+              <input type="text" class="form-control" id="sdet_province" disabled/>
             </div>
             
           </div>
@@ -175,65 +340,76 @@
 
             <div class="input-group mb-3">
               <span class="input-group-text">Telefon</span>
-              <input type="text" class="form-control" disabled/>
+              <input type="text" class="form-control" id="sdet_phone" disabled/>
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text">Telefon 2</span>
-              <input type="text" class="form-control" disabled/>
+              <input type="text" class="form-control" id="sdet_phone2" disabled/>
             </div>
             
           </div>
           <div class="col-12">
             <div class="input-group mb-3">
               <span class="input-group-text">Adres</span>
-              <input type="text" class="form-control" disabled/>
+              <input type="text" class="form-control" id="sdet_address" disabled/>
             </div>
           </div>
           <div class="col-6">
             <div class="input-group mb-3">
               <span class="input-group-text">Vergi Dairesi</span>
-              <input type="text" class="form-control" disabled/>
+              <input type="text" class="form-control" id="sdet_tax_office" disabled/>
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text">Sektör</span>
-              <input type="text" class="form-control" disabled/>
+              <input type="text" class="form-control" id="sdet_sector" disabled/>
             </div>
           </div>
           <div class="col-6">
             <div class="input-group mb-3">
               <span class="input-group-text">Vergi No</span>
-              <input type="text" class="form-control" disabled/>
+              <input type="text" class="form-control" id="sdet_tax_no" disabled/>
             </div>
             <div class="input-group mb-3">
               <label class="input-group-text">Firma Boyutu</label>
-              <select class="form-select" disabled></select>
+              <input type="text" class="form-control" id="sdet_firm_size" disabled/>
             </div>
           </div>
           <div class="col-6">
             <div class="input-group mb-3">
               <span class="input-group-text">Ürün</span>
-              <input type="text" class="form-control" disabled/>
+              <input type="text" class="form-control" id="sdet_product_code" disabled/>
             </div>
           </div>
           <div class="col-6">
             <div class="input-group mb-3">
               <span class="input-group-text">Ödeme Aralığı</span>
-              <input type="text" class="form-control" disabled/>
+              <select class="form-select" id="sdet_payment_interval" disabled>
+                <option value="MONTH">Aylık</option>
+                <option value="YEAR" selected>Yıllık</option>
+              </select>
             </div>
           </div>
           <div class="col-6">
             <div class="input-group mb-3">
               <span class="input-group-text">Tutar</span>
-              <input type="text" class="form-control" disabled/>
+              <input type="text" style="text-align: right;" class="form-control" id="sdet_total_fee" disabled/>
+              <span class="input-group-text">$</span>
             </div>
           </div>
         </div>
 
+        <hr>
+
+        <h3 style="font-size: 20px; margin-bottom: 20px;">Kullanıcı Bilgileri</h3>
+
+        <div class="row" id="sdet_keys">
+        </div>
+
 
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">İptal</button>
-        <button type="button" class="btn btn-primary">Kaydet</button>
+      <div class="modal-footer" style="justify-content: center;">
+        <button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-xmark"></i>&nbsp; İptal Et</button>
+        <button type="button" class="btn btn-sm btn-primary"><i class="fa-solid fa-arrows-rotate"></i>&nbsp; Yenile</button>
       </div>
     </div>
   </div>

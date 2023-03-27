@@ -17,6 +17,7 @@
   --black_light_tra: #151515cc;
   --side_black: #181818;
   --middle_black: #1b1b1b;
+  --middle_black_tra: #1b1b1b93;
   --earie_black: #1f1f1f;
   --darkest_jet: #202020;
   --darker_jet: #232323;
@@ -56,6 +57,11 @@ body {
   background-size: contain;
   background-position: center;
   height: 100vh;
+}
+
+.page-body {
+  overflow-y: scroll;
+  height: calc(100vh - 55px);
 }
 
 .btn {
@@ -152,7 +158,9 @@ hr {
   border-color: var(--onyx);
 }
 
-
+.modal-dialog {
+  transition: .4s;
+}
 .modal-content {
   background-color: var(--black_light_tra);
   backdrop-filter: blur(10px);
@@ -161,4 +169,106 @@ hr {
 
 .modal-footer, .modal-header {
   border-color: var(--darker_jet);
+}
+
+
+.user-filters {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.user-filters .filter-col {
+  padding: 10px;
+}
+
+.user-filters .filter-col .btn {
+  width: 100%;
+  opacity: 0.6;
+  transition: .2s;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.user-filters .filter-col .btn:hover, .user-filters .filter-col .selected {
+  opacity: 1 !important;
+}
+
+
+
+.user-card {
+  width: 300px;
+  border: 1px solid var(--jet_glass);
+  padding: 10px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  background-color: var(--middle_black_tra);
+  backdrop-filter: blur(5px);
+  display: inline-block;
+}
+
+.user-card .title {
+  margin: -10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: var(--darkest_jet);
+}
+
+.user-card .title .btn-link {
+  padding: 0 8px;
+  color: var(--platinium);
+  font-size: 16px;
+}
+
+.user-card .active {
+  background-color: var(--sea_green);
+}
+
+.user-card .title .btn-link:hover {
+  background-color: transparent;
+  color: var(--green_pantone);
+}
+
+
+.user-card .table {
+  margin-bottom: 0;
+  font-size: 12px;
+}
+.user-card .table th, .user-card .table td {
+  border-width: 0;
+  color: var(--platinium);
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.user-card .table th {
+  font-size: 14px;
+  background-color: transparent;
+  font-weight: normal;
+}
+.user-card .table td {
+  text-align: right;
+}
+
+.user-details td {
+  text-align: right;
+}
+.user-details-title {
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.table td, .table th {
+  border-width: 0;
+  color: var(--platinium)
+}
+.table th {
+  font-weight: bold;
+}
+
+.table-hover tr:hover, .table-hover tr:hover>* {
+  color: var(--platinium) !important;
+  background-color: var(--darkest_jet) !important;
 }

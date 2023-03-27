@@ -17,7 +17,7 @@ class Connector {
     await $.ajax({
       url: this.url,
       method: method,
-      data: data ? JSON.stringify(data) : data,
+      data: (data && method !== 'GET') ? JSON.stringify(data) : data,
       dataType: "json",
       contentType: 'application/json',
       headers: { 
@@ -35,6 +35,10 @@ class Connector {
       },
 
       error: (d, status) => {
+        console.log(d);
+        if (typeof(d.responseJSON.Data) === 'string' && d.responseJSON.Data.includes('permission')) {
+          location.href = "/login.html"
+        }
         throw new Error(d)
       }
     })
@@ -48,6 +52,10 @@ class Connector {
   //* Post Request
   //r returns answer as json
   async post (data) { return await this.sendRequest(data, 'POST') }
+
+  //* Put Request
+  //r returns answer as json
+  async put (data) { return await this.sendRequest(data, 'PUT') }
 
   //* Delete Request
   //r returns answer as json

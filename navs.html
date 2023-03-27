@@ -82,9 +82,12 @@
 
   <!-- Collapsed content -->
   <div class="collapse show" id="collapse_sell">
-    <button onclick="templateLoader('pages/satis', document.getElementById('page_body'), true);" class="btn btn-sidebar btn-alter-collapse"><i class="fa-solid fa-clipboard-check"></i> Satış Kayıtları</button>
-    <button class="btn btn-sidebar btn-alter-collapse"><i class="fa-solid fa-clipboard-question"></i> Demo Kullanıcıları</button>
-    <button class="btn btn-sidebar btn-alter-collapse"><i class="fa-solid fa-clipboard-list"></i> Fiyat Listesi</button>
+    <button onclick="templateLoader('pages/app_users', document.getElementById('page_body'), true);" class="btn btn-sidebar btn-alter-collapse">
+      <i class="fa-solid fa-user"></i> DeBI Kullanıcıları
+    </button>
+    <button class="btn btn-sidebar btn-alter-collapse">
+      <i class="fa-solid fa-clipboard-user"></i> Fiyat Listesi
+    </button>
   </div>
 
   <button onclick="collapse_handler('collapse_reseller')" id="btn_collapse_reseller" class="btn btn-sidebar btn-collapse" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapse_reseller" aria-expanded="false" aria-controls="collapse_reseller">
