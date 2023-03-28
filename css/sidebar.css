@@ -57,7 +57,8 @@
 
 .page-body {
   margin-left: 300px;
-  width: 100%;
+  width: calc(100% - 300px);
+  padding: 20px;
 }
 
 

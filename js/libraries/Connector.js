@@ -37,7 +37,7 @@ class Connector {
       error: (d, status) => {
         console.log(d);
         if (typeof(d.responseJSON.Data) === 'string' && d.responseJSON.Data.includes('permission')) {
-          location.href = "/login.html"
+          location.href = "login.html"
         }
         throw new Error(d)
       }

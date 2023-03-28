@@ -53,7 +53,7 @@
           style="border-radius: 5px;"
         >
           <li>
-            <button class="dropdown-item">Uygulamaya Geç</button>
+            <a href="http://debiapi.akatron.net/giris" class="dropdown-item">Uygulamaya Geç</a>
           </li>
           <li>
             <button onclick="Auth.logout().then(() => {location.reload()});" class="dropdown-item" href="#">Çıkış Yap</button>
@@ -85,9 +85,9 @@
     <button onclick="templateLoader('pages/app_users', document.getElementById('page_body'), true);" class="btn btn-sidebar btn-alter-collapse">
       <i class="fa-solid fa-user"></i> DeBI Kullanıcıları
     </button>
-    <button class="btn btn-sidebar btn-alter-collapse">
+    <a href="https://debi.akatron.net/fiyatlandirma/" target="_blank" class="btn btn-sidebar btn-alter-collapse">
       <i class="fa-solid fa-clipboard-user"></i> Fiyat Listesi
-    </button>
+    </a>
   </div>
 
   <button onclick="collapse_handler('collapse_reseller')" id="btn_collapse_reseller" class="btn btn-sidebar btn-collapse" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapse_reseller" aria-expanded="false" aria-controls="collapse_reseller">

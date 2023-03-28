@@ -10,6 +10,7 @@
   --cadmium_green_window: #1a6c3ec1;
   --cadmium_green_window_li: #14b85be5;
   --cadmium_green_dark: #185331;
+  --cadmium_green_darker: #13422731;
 
   /* -- Dark Colors */
   --modal_back: #0c0c0cbf;
@@ -154,6 +155,16 @@ body {
   border-radius: 0;
 }
 
+.input-required {
+  color: var(--platinium);
+  background-color: var(--cadmium_green_darker);
+}
+.input-required::after {
+  content: "*";
+  margin-left: 5px;
+  color: var(--sea_green);
+}
+
 hr {
   border-color: var(--onyx);
 }
@@ -171,11 +182,6 @@ hr {
   border-color: var(--darker_jet);
 }
 
-
-.user-filters {
-  margin-left: 10px;
-  margin-top: 10px;
-}
 
 .user-filters .filter-col {
   padding: 10px;
@@ -199,8 +205,8 @@ hr {
   width: 300px;
   border: 1px solid var(--jet_glass);
   padding: 10px;
-  margin-left: 30px;
-  margin-bottom: 30px;
+  margin-left: 20px;
+  margin-bottom: 20px;
   background-color: var(--middle_black_tra);
   backdrop-filter: blur(5px);
   display: inline-block;
@@ -213,7 +219,7 @@ hr {
   background-color: var(--darkest_jet);
 }
 
-.user-card .title .btn-link {
+.btn-user-details {
   padding: 0 8px;
   color: var(--platinium);
   font-size: 16px;
@@ -223,7 +229,7 @@ hr {
   background-color: var(--sea_green);
 }
 
-.user-card .title .btn-link:hover {
+.btn-user-details:hover {
   background-color: transparent;
   color: var(--green_pantone);
 }
@@ -271,4 +277,20 @@ hr {
 .table-hover tr:hover, .table-hover tr:hover>* {
   color: var(--platinium) !important;
   background-color: var(--darkest_jet) !important;
+}
+
+
+
+.box {
+  background-color: var(--black_light_tra);
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+}
+
+.box .title {
+  background-color: var(--black_light); padding: 10px;
+}
+
+.box .title h1 {
+  font-size: 22px;
 }

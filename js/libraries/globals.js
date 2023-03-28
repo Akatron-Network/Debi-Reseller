@@ -14,7 +14,8 @@ var template_modules = {
 
     for (let l of logs) {
       ht += "<tr>" +
-            "<td>" + l.register_date.split('T')[0] + " " + l.register_date.split('T')[1].split('.')[0] + "</td>" +
+            "<td>" + l.register_date.split('T')[0] + "</td>" +
+            "<td>" + l.register_date.split('T')[1].split('.')[0] + "</td>" +
             "<td>" + l.reseller_username + "</td>" +
             "<td>" + l.explanation + "</td>" +
             "<tr>"
@@ -26,6 +27,7 @@ var template_modules = {
 
   ['pages/app_users']: async () => {
     render_users();
+    render_products();
   }
 
 }
